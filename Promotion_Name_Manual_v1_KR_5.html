@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Promotion Name 작성 매뉴얼 — ELLIS / Console</title>
+<style>
+ *{box-sizing:border-box}
+ body{margin:0;font-family:"Malgun Gothic","맑은 고딕",Arial,sans-serif;background:#F4F6F8;color:#1B2430;line-height:1.6}
+ .wrap{max-width:1180px;margin:0 auto;padding:36px 24px 72px}
+ h1{font-size:28px;margin:0 0 6px} .sub{color:#5A6472;margin:0 0 28px;font-size:14px}
+ h2{font-size:19px;margin:38px 0 14px;padding-bottom:8px;border-bottom:2px solid #D5DBE2}
+ .rulebox{background:#fff;border:1px solid #D5DBE2;border-radius:10px;padding:20px 24px}
+ .formula{background:#1B2430;color:#fff;border-radius:8px;padding:16px 20px;font-family:Consolas,Monaco,monospace;
+   font-size:15px;margin:0 0 16px;overflow-x:auto}
+ .formula b{color:#7FD1C1}
+ table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff}
+ th,td{border:1px solid #D5DBE2;padding:8px 11px;text-align:left;vertical-align:top}
+ th{background:#2F4F6F;color:#fff;font-weight:bold}
+ tbody tr:nth-child(even){background:#F8FAFB}
+ code{background:#EEF2F5;padding:1px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:12.5px}
+ .cards{display:grid;gap:16px;margin-top:14px}
+ .card{background:#fff;border:1px solid #D5DBE2;border-left:5px solid var(--c);border-radius:10px;padding:18px 22px}
+ .card header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+ .badge{background:var(--c);color:#fff;font-size:11px;font-weight:bold;padding:3px 8px;border-radius:4px;letter-spacing:.5px}
+ .card h3{margin:0;font-size:17px;color:var(--c);font-family:Arial,sans-serif}
+ .vol{margin-left:auto;font-size:12px;color:#7A828C}
+ .desc{margin:8px 0 14px;font-size:14px}
+ .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+ @media(max-width:760px){.grid{grid-template-columns:1fr}}
+ .blk h4{margin:0 0 7px;font-size:12px;letter-spacing:.4px;color:#7A828C}
+ .blk ul{margin:0;padding-left:18px;font-size:13.5px}
+ .fmt{display:block;background:#EEF2F5;padding:9px 12px;border-radius:6px;font-size:13px;margin-bottom:8px}
+ ul.ex{list-style:none;padding:0} ul.ex li{padding:3px 0 3px 20px;position:relative;font-size:13.5px;font-family:Consolas,Monaco,monospace}
+ ul.ex li:before{content:"\2713";position:absolute;left:0;color:#2E7D5B;font-weight:bold}
+ .note.warn{background:#FDEEF0;border-left-color:#B3243B}
+ .note{margin:14px 0 0;padding:9px 13px;background:#FFF8E6;border-left:3px solid #D9A520;font-size:13px;border-radius:0 5px 5px 0}
+ details{margin-top:12px} summary{cursor:pointer;font-size:12.5px;color:#5A6472}
+ .live{font-size:12.5px;color:#48505A;margin:8px 0 0;font-family:Consolas,Monaco,monospace}
+ .ct{color:#9AA2AC;font-size:11px} .more{color:#9AA2AC;font-style:italic}
+ .bad{background:#FDEEF0;border-left:3px solid #B3243B} .good{background:#EDF7F2;border-left:3px solid #2E7D5B}
+ .cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ @media(max-width:760px){.cmp{grid-template-columns:1fr}}
+ .cmp div{padding:13px 16px;border-radius:0 7px 7px 0;font-size:13.5px}
+ .cmp h4{margin:0 0 8px;font-size:13px} .cmp ul{margin:0;padding-left:17px}
+ .cmp li{font-family:Consolas,Monaco,monospace;font-size:12.5px;padding:2px 0}
+ .cmp li span{font-family:"Malgun Gothic",Arial,sans-serif;color:#7A828C}
+ footer{margin-top:44px;padding-top:16px;border-top:1px solid #D5DBE2;font-size:12px;color:#7A828C}
+</style></head><body><div class="wrap">
+
+<h1>Promotion Name 작성 매뉴얼</h1>
+<p class="sub">ELLIS &amp; Vendor Console · <b>전 국가 공통 적용</b> · Promotion Type / Name 표기는 영문 기준 · v1.1 · 2026-08-11</p>
+
+<h2>1. 한 줄 규칙</h2>
+<div class="rulebox">
+<p class="formula">Promotion Name = <b>[조건값만]</b> + 환불불가 시 <b>(NRF)</b></p>
+<table><thead><tr><th style="width:28%">규칙</th><th>설명</th></tr></thead><tbody>
+<tr><td>대분류를 반복하지 않는다</td><td>부킹 리포트에 <code>[Type]-[Name]</code>으로 합쳐서 출력되므로 중복입니다. <code>30 Days Advance</code>로 쓰고 <code>Early Bird 30 Days</code>로 쓰지 않습니다.</td></tr>
+<tr><td>숫자를 반드시 쓴다</td><td>콘솔에 입력한 값이 이름에 그대로 나타나야 합니다. 숫자 없는 이름은 사후 검증이 불가능합니다.</td></tr>
+<tr><td>영문만 사용한다</td><td>한글·일본어·베트남어 금지. <code>연박</code>, <code>얼리버드</code>, <code>早割</code> 등을 쓰지 않습니다.</td></tr>
+<tr><td>결합은 <code>+</code>로 연결</td><td>앞뒤 공백을 두고 연결합니다. <code>30 Days Advance + Min 2 Nights</code></td></tr>
+<tr><td>NRF는 맨 뒤에</td><td>Non Refundable = Yes면 끝에 <code>(NRF)</code>를 붙입니다. <code>NR</code>, <code>Non Refundable</code>, <code>환불불가</code> 등 다른 표기는 사용하지 않습니다.</td></tr>
+<tr><td>Min. Nights = 1은 조건이 아니다</td><td>이름에서 생략합니다. <code>60 Days Advance</code>로 쓰고 <code>60 Days Advance + Min 1 Night</code>로 쓰지 않습니다.</td></tr>
+<tr><td>시즌명·기획전명을 넣지 않는다</td><td>단, Basic Promotion에서는 <code>Basic Rate: Summer 2026</code> 형태로 허용합니다.</td></tr>
+</tbody></table></div>
+
+<h2>2. Promotion Type별 작성법</h2>
+<p style="font-size:12.5px;color:#7A828C;margin:-6px 0 12px">아래 예약 건수와 표준명 수는 한국·일본·베트남 데이터(체크아웃 2026-01-01 ~ 2027-06-30) 기준입니다. 규칙 자체는 전 국가에 동일하게 적용됩니다.</p>
+<div class="cards">
+    <section class="card" style="--c:#1F6FB2">
+      <header><span class="badge">EB</span><h3>Early Bird</h3>
+        <span class="vol">23,542건 · 표준명 53종 (KR/JP/VN)</span></header>
+      <p class="desc">미리 예약하는 고객에게 제공하는 할인</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li><b>Days in Advance</b> — 숫자 입력 1개</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">N Days Advance</code>
+          <ul class="ex"><li>30 Days Advance</li><li>60 Days Advance</li><li>14 Days Advance (NRF)</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 입력 권장값 — 3 / 5 / 7 / 10 / 14 / 21 / 28 / 30 / 45 / 60 / 90</p>
+      
+      <details><summary>이 Type의 표준명 (53종) — KR/JP/VN 데이터</summary><p class="live">30 Days Advance <span class="ct">8,835</span> · 60 Days Advance <span class="ct">3,794</span> · 14 Days Advance <span class="ct">1,256</span> · 7 Days Advance <span class="ct">1,235</span> · 28 Days Advance <span class="ct">1,182</span> · 15 Days Advance <span class="ct">1,016</span> · 90 Days Advance <span class="ct">990</span> · 45 Days Advance <span class="ct">689</span> <span class="more">외 45종</span></p></details>
+    </section>
+    <section class="card" style="--c:#C2571A">
+      <header><span class="badge">LM</span><h3>Last Minute</h3>
+        <span class="vol">4,985건 · 표준명 22종 (KR/JP/VN)</span></header>
+      <p class="desc">체크인 날짜가 임박한 예약에 제공하는 할인</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li><b>Within [N] Days until check in</b> — 숫자 입력 1개</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">Within N Days</code>
+          <ul class="ex"><li>Within 3 Days</li><li>Within 7 Days</li><li>Within 0 Days (NRF)</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 입력 권장값 — 0 / 1 / 2 / 3 / 5 / 7 / 14 / 21</p>
+      
+      <details><summary>이 Type의 표준명 (22종) — KR/JP/VN 데이터</summary><p class="live">Within 3 Days <span class="ct">1,176</span> · Within 7 Days <span class="ct">808</span> · Within 7 Days (NRF) <span class="ct">594</span> · Within 6 Days <span class="ct">584</span> · Within 0 Days <span class="ct">268</span> · Within 1 Days <span class="ct">259</span> · Within 14 Days (NRF) <span class="ct">178</span> · Within 2 Days <span class="ct">175</span> <span class="more">외 14종</span></p></details>
+    </section>
+    <section class="card" style="--c:#2E7D5B">
+      <header><span class="badge">MN</span><h3>Min &amp; Max Nights</h3>
+        <span class="vol">57,597건 · 표준명 17종 (KR/JP/VN)</span></header>
+      <p class="desc">특정 숙박 일수 조건을 충족할 경우 제공하는 할인</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li><b>Min. Nights</b> — 숫자 입력</li><li><b>Max. Nights</b> — 숫자 입력 (선택)</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">Min N Nights  /  Min N Nights &amp; Max M Nights</code>
+          <ul class="ex"><li>Min 2 Nights</li><li>Min 3 Nights (NRF)</li><li>Min 2 Nights &amp; Max 5 Nights</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 입력 권장값 — 2 / 3 / 4 / 5 / 6 / 7 / 10 / 14</p>
+      
+      <details><summary>이 Type의 표준명 (17종) — KR/JP/VN 데이터</summary><p class="live">Min 2 Nights <span class="ct">45,548</span> · Min 3 Nights <span class="ct">7,661</span> · Min 2 Nights (NRF) <span class="ct">1,615</span> · Min 5 Nights <span class="ct">739</span> · Min 4 Nights <span class="ct">646</span> · Min. Nights not specified <span class="ct">426</span> · Min 3 Nights (NRF) <span class="ct">367</span> · Min 5 Nights (NRF) <span class="ct">263</span> <span class="more">외 9종</span></p></details>
+    </section>
+    <section class="card" style="--c:#7B4FA8">
+      <header><span class="badge">NF</span><h3>Nth Nights Free</h3>
+        <span class="vol">24건 · 표준명 4종 (KR/JP/VN)</span></header>
+      <p class="desc">N박 예약 시 N번째 박을 무료로 제공. 입력값은 <b>무료가 되는 박</b>의 순번</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li><b>Nth Night Free</b> — 숫자 입력 1개</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">Nth Night Free  (서수 표기)</code>
+          <ul class="ex"><li>3rd Night Free</li><li>5th Night Free</li><li>7th Night Free (NRF)</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 3 입력 = 3박 예약 시 3번째 박 무료 (2박 요금만 결제)</p>
+      
+      <details><summary>이 Type의 표준명 (4종) — KR/JP/VN 데이터</summary><p class="live">5th Night Free <span class="ct">11</span> · 3rd Night Free <span class="ct">8</span> · 2nd Night Free <span class="ct">4</span> · 7th Night Free <span class="ct">1</span></p></details>
+    </section>
+    <section class="card" style="--c:#B3243B">
+      <header><span class="badge">SP</span><h3>Special Promotion</h3>
+        <span class="vol">6,196건 · 표준명 63종 (KR/JP/VN)</span></header>
+      <p class="desc"><b>결합 전용 타입.</b> 시스템이 지원하는 결합은 아래 2가지뿐</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li>라디오 ① <b>Early Bird + Min Nights</b> → Days in Advance &amp; Min. Nights</li><li>라디오 ② <b>Last Minute + Min Nights</b> → Within Days until check in &amp; Min. Nights</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">N Days Advance + Min M Nights  /  Within N Days + Min M Nights</code>
+          <ul class="ex"><li>30 Days Advance + Min 2 Nights</li><li>Within 14 Days + Min 2 Nights</li><li>60 Days Advance + Min 3 Nights (NRF)</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 조건이 1개거나 없는 프로모션에는 절대 사용 금지</p>
+      
+      <details><summary>이 Type의 표준명 (63종) — KR/JP/VN 데이터</summary><p class="live">3 Days Advance + Min 2 Nights <span class="ct">973</span> · 30 Days Advance + Min 2 Nights <span class="ct">723</span> · 14 Days Advance + Min 2 Nights <span class="ct">629</span> · 30 Days Advance + Min 3 Nights <span class="ct">496</span> · Within 14 Days + Min 2 Nights <span class="ct">310</span> · 30 Days Advance + Min 4 Nights <span class="ct">298</span> · 90 Days Advance + Min 2 Nights <span class="ct">246</span> · 21 Days Advance + Min 2 Nights <span class="ct">222</span> <span class="more">외 55종</span></p></details>
+    </section>
+    <section class="card" style="--c:#8A6410">
+      <header><span class="badge">MP</span><h3>Member Promotion</h3>
+        <span class="vol">16,057건 · 표준명 37종 (KR/JP/VN)</span></header>
+      <p class="desc">회원에게만 제공하는 할인. 결합 조건 라디오는 선택 사항</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li>라디오 ① <b>Early Bird + Min Nights</b> (선택)</li><li>라디오 ② <b>Last Minute + Min Nights</b> (선택)</li><li>라디오 미선택 = 회원가 단독</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">Member Rate  /  N Days Advance  /  N Days Advance + Min M Nights</code>
+          <ul class="ex"><li>Member Rate</li><li>60 Days Advance</li><li>90 Days Advance + Min 2 Nights (NRF)</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — Min. Nights = 1은 "조건 없음"을 의미 — 이름에 쓰지 않음</p>
+      
+      <details><summary>이 Type의 표준명 (37종) — KR/JP/VN 데이터</summary><p class="live">Member Rate <span class="ct">8,878</span> · 60 Days Advance <span class="ct">1,795</span> · Min 2 Nights <span class="ct">928</span> · Min 3 Nights <span class="ct">823</span> · 30 Days Advance <span class="ct">652</span> · Min 2 Nights (NRF) <span class="ct">590</span> · 30 Days Advance (NRF) <span class="ct">512</span> · Member Rate (NRF) <span class="ct">441</span> <span class="more">외 29종</span></p></details>
+    </section>
+    <section class="card" style="--c:#3F6E8C">
+      <header><span class="badge">HP</span><h3>Hotel PKG Promotion</h3>
+        <span class="vol">12,469건 · 표준명 1종 (KR/JP/VN)</span></header>
+      <p class="desc">호텔 자체 패키지. 추가 혜택·서비스를 포함하며 단독 요금으로 판매 가능. 채널 제한 없음, 조건 입력 없음</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li>없음 — Promotion Name만 입력</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">Package  /  Package: [혜택]</code>
+          <ul class="ex"><li>Package</li><li>Package: Breakfast + Dinner</li><li>Package: Spa (NRF)</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 얼리버드·연박 조건이 붙는 패키지는 Dynamic PKG Promotion 사용</p>
+      
+      <details><summary>이 Type의 표준명 (1종) — KR/JP/VN 데이터</summary><p class="live">Package <span class="ct">12,469</span></p></details>
+    </section>
+    <section class="card" style="--c:#0F6E6E">
+      <header><span class="badge">DP</span><h3>Dynamic PKG Promotion</h3>
+        <span class="vol">512건 · 표준명 10종 (KR/JP/VN)</span></header>
+      <p class="desc">다이나믹 요금 패키지. 조건 옵션이 가장 넓은 타입</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li>라디오 ① <b>Early Bird + Min Nights</b></li><li>라디오 ② <b>Last Minute + Min Nights</b></li><li>라디오 ③ <b>Min Nights</b></li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">Package  /  Min N Nights  /  N Days Advance + Min M Nights</code>
+          <ul class="ex"><li>Package</li><li>Min 3 Nights</li><li>90 Days Advance + Min 2 Nights</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 패키지에 연박 조건만 단독으로 걸 수 있는 유일한 타입</p>
+      <p class="note warn"><b>채널 제한</b> — Dynamic PKG Promotion은 단독 요금이 아닙니다. 항공·액티비티 등과 결합한 패키지 상품 개념이며, 이 요금을 제공할 수 있는 채널이 제한됩니다. 설정 전에 판매 가능 채널을 반드시 확인하세요.</p>
+      <details><summary>이 Type의 표준명 (10종) — KR/JP/VN 데이터</summary><p class="live">Package <span class="ct">352</span> · Package (NRF) <span class="ct">107</span> · 90 Days Advance + Min 2 Nights <span class="ct">19</span> · Min 3 Nights <span class="ct">14</span> · Min 2 Nights <span class="ct">11</span> · 60 Days Advance + Min 2 Nights <span class="ct">4</span> · 60 Days Advance <span class="ct">2</span> · 30 Days Advance + Min 2 Nights <span class="ct">1</span> <span class="more">외 2종</span></p></details>
+    </section>
+    <section class="card" style="--c:#5A6472">
+      <header><span class="badge">BP</span><h3>Basic Promotion</h3>
+        <span class="vol">119,161건 · 표준명 2종 (KR/JP/VN)</span></header>
+      <p class="desc">구조적 조건이 없는 일반 할인. 조건 입력 없음</p>
+      <div class="grid">
+        <div class="blk"><h4>콘솔 입력 필드</h4><ul><li>없음 — Promotion Name만 입력</li></ul></div>
+        <div class="blk"><h4>Promotion Name 작성 형식</h4><code class="fmt">Basic Rate  /  Basic Rate: [캠페인명]</code>
+          <ul class="ex"><li>Basic Rate</li><li>Basic Rate: Summer 2026</li><li>Basic Rate: Flash Sale (NRF)</li></ul></div>
+      </div>
+      <p class="note"><b>주의</b> — 시즌 특가·기획전·정률할인은 전부 여기로 — Special Promotion이 아님</p>
+      
+      <details><summary>이 Type의 표준명 (2종) — KR/JP/VN 데이터</summary><p class="live">Basic Rate <span class="ct">107,514</span> · Basic Rate (NRF) <span class="ct">11,647</span></p></details>
+    </section></div>
+
+<h2>3. 어떤 Type을 골라야 하나</h2>
+<div class="rulebox">
+<table><thead><tr><th style="width:40%">실제 프로모션 내용</th><th style="width:26%">Promotion Type</th><th>Promotion Name</th></tr></thead><tbody>
+<tr><td>30일 이상 미리 예약</td><td>Early Bird</td><td><code>30 Days Advance</code></td></tr>
+<tr><td>체크인 3일 이내 예약</td><td>Last Minute</td><td><code>Within 3 Days</code></td></tr>
+<tr><td>2박 이상 숙박</td><td>Min &amp; Max Nights</td><td><code>Min 2 Nights</code></td></tr>
+<tr><td>30일 이상 미리 예약 <b>그리고</b> 2박 이상</td><td>Special Promotion</td><td><code>30 Days Advance + Min 2 Nights</code></td></tr>
+<tr><td>3박 예약 시 1박 무료</td><td>Nth Nights Free</td><td><code>3rd Night Free</code></td></tr>
+<tr><td>회원 전용, 다른 조건 없음</td><td>Member Promotion</td><td><code>Member Rate</code></td></tr>
+<tr><td>회원 전용 + 60일 이상 미리 예약</td><td>Member Promotion</td><td><code>60 Days Advance</code></td></tr>
+<tr><td>조식 포함 패키지, 조건 없음</td><td>Hotel PKG Promotion</td><td><code>Package: Breakfast</code></td></tr>
+<tr><td>3박 이상 조건이 붙는 패키지</td><td>Dynamic PKG Promotion</td><td><code>Min 3 Nights</code></td></tr>
+<tr><td>시즌 특가, 정률 할인, 반짝 특가</td><td>Basic Promotion</td><td><code>Basic Rate: Summer 2026</code></td></tr>
+</tbody></table>
+<p class="note"><b>Special Promotion은 결합 전용입니다.</b> 조건이 1개거나 없으면 이 타입을 쓰지 않습니다. 현재 데이터에서 가장 흔한 오류이며, Special Promotion으로 등록된 71,364건이 결합 조건 없이 시즌명·기획전명만 붙어 있습니다.</p>
+</div>
+
+<h2>4. 올바른 예 / 잘못된 예</h2>
+<div class="cmp">
+<div class="good"><h4>✓ 올바른 작성</h4><ul>
+<li>Early Bird · 30 Days Advance</li>
+<li>Last Minute · Within 7 Days (NRF)</li>
+<li>Min &amp; Max Nights · Min 2 Nights</li>
+<li>Special Promotion · 60 Days Advance + Min 3 Nights</li>
+<li>Member Promotion · Member Rate</li>
+<li>Basic Promotion · Basic Rate: Golden Week 2026</li>
+</ul></div>
+<div class="bad"><h4>✗ 잘못된 작성과 사유</h4><ul>
+<li>Early Bird · Early Bird 30 Days <span>— 대분류 중복</span></li>
+<li>Early Bird · EB30 <span>— 약어 사용</span></li>
+<li>Min &amp; Max Nights · 2연박 <span>— 영문 아님</span></li>
+<li>Special Promotion · Summer Sale <span>— 결합 아님, Basic으로</span></li>
+<li>Min &amp; Max Nights · M2N <span>— 약어 사용</span></li>
+<li>Early Bird · Advance Purchase <span>— 숫자 없음</span></li>
+<li>Last Minute · 3일 전 라스트미닛 NR <span>— 언어 + NRF 표기 오류</span></li>
+</ul></div>
+</div>
+
+<h2>5. 입력값 권장 범위</h2>
+<div class="rulebox">
+<table><thead><tr><th style="width:28%">입력 필드</th><th>권장값</th></tr></thead><tbody>
+<tr><td>Days in Advance</td><td><code>3</code> <code>5</code> <code>7</code> <code>10</code> <code>14</code> <code>21</code> <code>28</code> <code>30</code> <code>45</code> <code>60</code> <code>90</code></td></tr>
+<tr><td>Days until check-in</td><td><code>0</code> <code>1</code> <code>2</code> <code>3</code> <code>5</code> <code>7</code> <code>14</code> <code>21</code></td></tr>
+<tr><td>Min. Nights</td><td><code>2</code> <code>3</code> <code>4</code> <code>5</code> <code>6</code> <code>7</code> <code>10</code> <code>14</code></td></tr>
+<tr><td>Nth Night Free</td><td><code>2</code> <code>3</code> <code>5</code> <code>7</code></td></tr>
+</tbody></table>
+<p class="note">계약상 필요하면 목록 외 값도 사용할 수 있으나, 가능한 한 위 값을 사용해 주세요. 국가 간 리포트 비교가 가능해집니다.</p>
+</div>
+
+
+<h2>6. 기준으로 표현할 수 없는 호텔 요청 — Vendor Remark에 기재</h2>
+<div class="rulebox">
+<p class="formula">Promotion Name은 표준 그대로. <b>나머지는 전부 Vendor Remark에.</b></p>
+<p style="font-size:14px;margin:0 0 16px">호텔이 자기 표현을 그대로 써달라고 하거나, 콘솔에 입력 필드가 없는 조건을 요구하는 경우가 있습니다. 특정 룸타입 한정, 블랙아웃 기간, 요일 제한 같은 것들입니다. 이때 Promotion Name을 바꾸지 않습니다. 표준 이름으로 등록한 뒤, Vendor Promotion Detail 화면 하단의 <b>Vendor Remark</b> 필드에 요청 내용을 기재합니다.</p>
+<table><thead><tr><th style="width:12%">태그</th><th style="width:30%">용도</th><th>작성 예시</th></tr></thead><tbody>
+<tr><td><code>[NAME]</code></td><td>호텔이 요청한 원문 명칭</td><td><code>[NAME] Hotel requested: "여름 한정 얼리버드 30일 특가"</code></td></tr>
+<tr><td><code>[COND]</code></td><td>콘솔에 담을 수 없는 추가 조건</td><td><code>[COND] Deluxe Twin only, Mon-Thu check-in</code></td></tr>
+<tr><td><code>[EXCL]</code></td><td>블랙아웃·제외 조건</td><td><code>[EXCL] Blackout 2026-12-24 ~ 2027-01-02</code></td></tr>
+<tr><td><code>[SRC]</code></td><td>요청 근거·출처</td><td><code>[SRC] Hotel email, sales manager, 2026-08-05</code></td></tr>
+</tbody></table>
+<p style="font-size:13px;color:#5A6472;margin:12px 0 0">
+<b>작성 규칙</b> — 한 줄에 태그 하나 · 태그는 대괄호 안 대문자 · 본문은 영문 작성, 단 호텔이 요청한 원문 명칭은 나중에 대조할 수 있도록 따옴표 안에 원어 그대로 인용 · 날짜는 <code>YYYY-MM-DD</code> · 기준을 벗어나는 내용이 없으면 Vendor Remark는 비워 둡니다.</p>
+</div>
+<div class="cmp" style="margin-top:14px">
+<div class="bad"><h4>✗ 잘못된 작성 — 요청을 이름에 우겨넣음</h4><ul>
+<li><span>Type</span> Early Bird</li>
+<li><span>Name</span> 여름 한정 얼리버드 30일 특가</li>
+<li><span>Vendor Remark</span> (비어 있음)</li>
+</ul><p style="font-size:12.5px;margin:9px 0 0">영문 원칙과 시즌명 금지 규칙을 모두 어기고, 30일 조건도 기계적으로 읽을 수 없게 됩니다.</p></div>
+<div class="good"><h4>✓ 올바른 작성 — 표준 이름 + Vendor Remark</h4><ul>
+<li><span>Type</span> Early Bird</li>
+<li><span>Name</span> 30 Days Advance</li>
+<li><span>Vendor Remark</span></li>
+<li>[NAME] Hotel requested: "여름 한정 얼리버드 30일 특가"</li>
+<li>[COND] Deluxe Twin only</li>
+<li>[SRC] Hotel email, 2026-08-05</li>
+</ul></div>
+</div>
+
+<footer>
+데이터 출처 — ELLIS Hotel Booking List 6개 export (2026-08-10 생성), 체크아웃 기준 2026-01-01 ~ 2027-06-30, 온북(Confirmed + Reserved).
+한국·일본·베트남 240,543건 / 574,402 룸나잇 — 표준을 도출한 분석 대상입니다. 매뉴얼 자체는 전 국가에 적용됩니다.<br>
+콘솔 입력 필드 스펙 — <i>Vendor Promotion Ellis Console Setting Guide</i> (2026.08) 및 실제 콘솔 화면 확인.
+현재 사용 중인 프로모션명 2,002종이 본 매뉴얼 기준 <b>209종</b>으로 통합됩니다.
+</footer>
+</div></body></html>
